@@ -11,7 +11,7 @@ const QuoteSchema = new Schema({
 
     quote : {
         type: String,
-        required: [true, 'Name quote is required']
+        required: [true, 'Quote field is required']
     }
 
 });
