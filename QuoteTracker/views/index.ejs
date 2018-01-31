@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" />
+  <link href="/style.css" rel ="stylesheet" type ="text/css"/> 
+  <title>QuoteTracker</title>
+</head>
+<body>
+<h1 class = "title"> Simple REST application </h1> 
+<div id = "homepage">
+        <h1> Quotes </h1>
+
+        <ul class="quotes">
+        <% for(var i=0; i<quotesList.length; i++) {%>
+            <li class="quote">
+            Name : <span><%= quotesList[i].name %></span><br/>
+            <hr>
+            Quote : <span><%= quotesList[i].quote %></span>
+            </li>
+        <% } %>
+        </ul>
+<hr>
+        <h2>Add New Quotes</h2>
+
+        
+        <form action="/quotes" method="POST">
+            <label >Name:</label>
+            <input id = "DataName" type="text" placeholder="name" name="name">
+            <label >Quote:</label>
+            <input  id = "DataQuote" type="text" placeholder="quote" name="quote">
+            <br><button type="submit">Add Quote</button>
+
+        </form>
+<hr>
+        <h2>Edit/Delete Quotes</h2>
+
+        <form>
+            
+            <label >Exiting Name:</label>
+            <input  id = "EEditName" type="text" placeholder="existing name to edit" name="EEditName">
+            <label >Editing Name:</label>
+            <input  id = "EditName" type="text" placeholder="name to edit" name="EditName">
+            <label >Editing Quote:</label>
+            <input  id = "EditQuote" type="text" placeholder="quote to delete" name="EditQuote">
+            <button id="update"> Update </button>
+            <div class="divider"/>
+            <button id="delete"> Delete </button>
+
+        </form>
+
+
+
+</div>
+  <script src="main.js"></script>
+</body>
+</html>
