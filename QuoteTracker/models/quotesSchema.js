@@ -6,10 +6,12 @@ const QuoteSchema = new Schema({
 
     name : {
         type: String,
+        required: [true, 'Name field is required']  
     },
 
     quote : {
         type: String,
+        required: [true, 'Name quote is required']
     }
 
 });
