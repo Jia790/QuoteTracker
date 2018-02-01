@@ -1,5 +1,5 @@
 # QuoteTracker
-Simple single page application that uses MongoDB, Express, NodeJs, and EJs to keep track of quotes, and allow for edit operations of existing quotes.
+A simple single page application that uses the ReST architecture, along with MongoDB, Express, NodeJs, and EJs to keep track of quotes, and allow for edit operations of existing quotes.
 
 For this App to work:
 
