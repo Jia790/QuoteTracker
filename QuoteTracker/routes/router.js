@@ -84,7 +84,7 @@ router.put('/update', function(req, res){
 
   Quote.findOneAndUpdate({name: req.body.Ename}, { 
     $set: { name: req.body.name, quote: req.body.quote} }, 
-      {sort: {_id: -1},upsert: true }, 
+      {sort: {_id: -1},upsert: false }, 
         function(err, result){ if (err){ return res.send(err)} 
            }).then(function(){ res.redirect('/') }).catch(next);
     
