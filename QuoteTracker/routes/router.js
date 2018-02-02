@@ -39,7 +39,7 @@ router.get('/', function(req, res, next){
 
   Quote.find({}).then(function(quotes){
     console.log("showing all quotes");
-    res.render('index.ejs', {quotesList: quotes})
+    res.render('index.ejs', {quotesList: quotes});
   }).catch(next);
     
 
@@ -86,7 +86,7 @@ router.put('/update', function(req, res){
     $set: { name: req.body.name, quote: req.body.quote} }, 
       {sort: {_id: -1},upsert: false }, 
         function(err, result){ if (err){ return res.send(err)} 
-           }).then(function(){ res.redirect('/') }).catch(next);
+           }).then(function(){ res.send(result); }).catch(next);
     
     
         /*db.collection('quotes')
@@ -115,11 +115,10 @@ router.delete('/delete', function(req, res, next){
     function(err, result){
       if (err) return res.send(500, err)
       console.log('deleted from database');
-      res.redirect('/')
     }).then(function(){
-      //res.redirect('/')
+        res.send(result);
     }
-    ).catch(next)
+    ).catch(next);
 
   /*
     db.collection('quotes').findOneAndDelete({name: req.body.name},
