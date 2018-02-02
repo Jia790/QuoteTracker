@@ -10,11 +10,11 @@ update.addEventListener('click',function(){
           'quote': document.getElementById('EditQuote').value
         })
       }).then(data => {
-        console.log(data)
+        console.log(data);
         window.onbeforeunload = function () {
           window.scrollTo(0, 0);
         }
-        window.location.reload(true)
+        window.location.reload(true);
       })
 })
 
@@ -33,13 +33,13 @@ del.addEventListener('click', function () {
     })
   })
   .then(res => {
-    if (res.ok) return res.json()
+    if (res.ok) return res.json();
   }).
   then(data => {
     console.log(data)
     window.onbeforeunload = function () {
       window.scrollTo(0, 0);
     }
-    window.location.reload(true)
+    window.location.reload(true);
   })
 })
