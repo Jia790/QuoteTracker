@@ -2,9 +2,9 @@
 const express = require('express');
 
 //include body parser for extracting data from request
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-
+const compression = require('compression');
 //set up express app
 const app = express();
 
@@ -22,6 +22,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname +'/public')); // serves static files such as html, css, image, etc
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(compression());
 
 //This will make sure the express app use the exported routes
 app.use(require('./routes/router'));
