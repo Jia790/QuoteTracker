@@ -118,9 +118,9 @@ router.put('/api/update', function(req, res){
 
 router.delete('/api/delete', function(req, res, next){
 
-  Quote.deleteTarget(req, res);
+  //Quote.deleteTarget(req, res);
   
-  /*Quote.findOneAndRemove({name: req.body.name},
+  Quote.findOneAndRemove({name: req.body.name},
     function(err, result){
       if (err) {return res.send(500, err);}
       console.log('deleted from database');
@@ -128,7 +128,7 @@ router.delete('/api/delete', function(req, res, next){
     }).then(function(){
       res.send(result);
     }
-    ).catch(next); */
+    ).catch(next);
 
   /*
     db.collection('quotes').findOneAndDelete({name: req.body.name},
