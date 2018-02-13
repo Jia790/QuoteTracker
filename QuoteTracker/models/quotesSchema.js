@@ -44,17 +44,18 @@ module.exports.updateTarget = function(req, res){
         $set: { name: req.body.name, quote: req.body.quote} }, 
           {sort: {_id: -1},upsert: false }, 
             function(err, result){ if (err){ return res.send(err);} 
-               }).then(function(){ res.send(result); }).catch(next);
+               }).then(function(){ res.send(result); });
 }
 
+// not using currently since it creates a warning
 module.exports.deleteTarget = function(req, res){
     Quote.findOneAndRemove({name: req.body.name},
         function(err, result){
           if (err) {return res.send(500, err);}
           console.log('deleted from database');
-          //res.redirect('/')
+          res.redirect('/');
         }).then(function(){
           res.send(result);
         }
-        ).catch(next);
+        );  
 }
