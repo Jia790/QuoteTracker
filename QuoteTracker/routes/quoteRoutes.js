@@ -40,34 +40,38 @@ router.get('/', function(req, res, next){
   Quote.find({}).then(function(quotes){
     console.log("showing all quotes");
     res.render('index.ejs', {quotesList: quotes});
-  }).catch(next);
-    
+  }).catch(next);   
 
 }
 );
 
-router.get('/quotes', function(req, res){
-  res.redirect('/');
-});
 
 /** POST route handler */
 /** Add new item in database */
-router.post('/quotes', function(req, res, next){
+router.post('/api/quotes', function(req, res, next){
     
-  new Quote({
+  let newQuote = new Quote({
     name : req.body.name,
     quote: req.body.quote,
     
-    }).save(function(err, doc){
-    if(err){
-        res.json(err);
-    }
-    else{
-        res.redirect('/');
-    }
- }
+    });
 
-); 
+    Quote.addQuote(newQuote, res);
+
+/*new Quote({
+  name : req.body.name,
+  quote: req.body.quote,
+  
+  }).save(function(err, doc){
+  if(err){
+      res.json(err);
+  }
+  else{
+      res.redirect('/');
+  }
+}
+
+);*/ 
   
   /*db.collection('quotes').save(req.body, (err, result) => {
         if (err) return console.log(err)
@@ -80,13 +84,16 @@ router.post('/quotes', function(req, res, next){
 
 /** PUT route handler */
 /** Update item in database */
-router.put('/update', function(req, res){
+router.put('/api/update', function(req, res){
 
+  Quote.updateTarget(req, res);
+
+  /*
   Quote.findOneAndUpdate({name: req.body.Ename}, { 
     $set: { name: req.body.name, quote: req.body.quote} }, 
       {sort: {_id: -1},upsert: false }, 
-        function(err, result){ if (err){ return res.send(err)} 
-           }).then(function(){ res.send(result); }).catch(next);
+        function(err, result){ if (err){ return res.send(err);} 
+           }).then(function(){ res.send(result); }).catch(next);*/
     
     
         /*db.collection('quotes')
@@ -109,16 +116,19 @@ router.put('/update', function(req, res){
 /** Update item in database */
 /* The ":" means it is a parameter */
 
-router.delete('/delete', function(req, res, next){
+router.delete('/api/delete', function(req, res, next){
 
-  Quote.findOneAndRemove({name: req.body.name},
+  Quote.deleteTarget(req, res);
+  
+  /*Quote.findOneAndRemove({name: req.body.name},
     function(err, result){
-      if (err) return res.send(500, err)
+      if (err) {return res.send(500, err);}
       console.log('deleted from database');
+      //res.redirect('/')
     }).then(function(){
-        res.send(result);
+      res.send(result);
     }
-    ).catch(next);
+    ).catch(next); */
 
   /*
     db.collection('quotes').findOneAndDelete({name: req.body.name},
