@@ -28,7 +28,7 @@ del.addEventListener('click', function () {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      'name': document.getElementById('EditName').value,
+      'name': document.getElementById('EEditName').value,
       'quote': document.getElementById('EditQuote').value
     })
   })
